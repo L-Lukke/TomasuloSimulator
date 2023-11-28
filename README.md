@@ -1,5 +1,14 @@
 # TomasuloSimulator
 
+## Execução:
+
+Os arquivos `source.txt` e `source.exe` devem estar no mesmo diretório.
+
+1- Abrir um terminal powershell 
+2- Executar o comando: `./source`
+
+Para avançar os ciclos do programa, digite um número no terminal para avançar um ciclo, dois números para avançar dois ciclos, e por assim em diante e pressione a tecla `Enter`.
+
 ## Structs:
 
 ### Gerais:
