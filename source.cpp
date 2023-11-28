@@ -1960,7 +1960,7 @@ struct Tomasulo
 		cout << "Registradores:";
 		gotoxy(107, a);
 		cout << "  Nome" << "   Valor";
-		gotoxy(108, a + 1);
+		gotoxy(108, ++a);
 		cout << "______________";
 
 		for (int i = 0; i < regs.size(); i++)
@@ -1970,7 +1970,10 @@ struct Tomasulo
 				gotoxy(98 + 2, a);
 				cout << setw(10) << std::right << "| " << regs[i].name;
 				cout << " ";
-				cout << "|" << std::right << setw(7) << regs[i].value << "|";
+				cout << "|" << std::right << setw(4) << regs[i].value << setw(4)  << "|";
+				a++;
+				gotoxy(108, a);
+				cout << "|____|_______|" << endl;
 			}
 			
 			// if (loadBuffers[i].instruction != nullptr)
