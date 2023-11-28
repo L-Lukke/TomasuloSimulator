@@ -20,6 +20,18 @@
 
 #### struct LoadStoreBuffer: Modela um buffer de carga ou armazenamento, indicando seu estado (isBusy), endereço, unidade funcional (fu) e uma instrução associada.
 
-### Tomasulo:
+### Struct Tomasulo:
 
-####
+#### Método execute: A função execute() simula como as instruções são processadas em um chip de computador usando o método de Tomasulo. Ela verifica se as instruções podem ser executadas e avança seu progresso em diferentes áreas do chip, como buffers de carga, armazenamento e unidades de cálculo. Ela também lida com problemas como dependência de dados e atualiza o estado das instruções à medida que são executadas ou completadas. Essencialmente, é como um "motor" que move as instruções pelo chip, controlando sua execução e garantindo que tudo ocorra corretamente.
+
+#### Método issueInstruction: A função issueInstruction() emite diferentes tipos de instruções (LOAD, STORE, ADD, SUB, MULT, DIV) em um simulador Tomasulo. Ela verifica a disponibilidade de buffers e estações de reserva para cada tipo de instrução, configura os buffers com as instruções emitidas, seus endereços e informações de execução, além de lidar com possíveis dependências de dados (RAW hazards). Se não houver recursos disponíveis, registra um aviso de hazard estrutural e retorna -1, caso contrário, retorna 0 indicando sucesso na emissão da instrução.
+
+#### Método writeBack: A função writeBack() é responsável por escrever de volta os resultados das instruções executadas. Ela percorre os buffers de carga, armazenamento, soma, subtração, multiplicação e divisão, verificando se as instruções estão prontas para serem escritas de volta na memória ou nos registradores. Assim que uma instrução é completada, ela atualiza os valores correspondentes e libera os recursos utilizados, preparando-se para a próxima etapa do ciclo de execução.
+
+#### Método print: A função print() exibe detalhes sobre as instruções, buffers de carga/armazenamento, estações de reserva e o status dos registradores. Ela mostra informações como tipo de instrução, registradores envolvidos, estado de execução e escrita de volta. Também fornece uma representação visual do estado atual do sistema de simulação de processamento.
+
+#### Método Simulate: A função Simulate() executa o ciclo de simulação do processador. Ela itera continuamente através dos estágios de execução de instruções: emissão, execução e escrita de volta. Durante cada ciclo, exibe o número do ciclo atual, atualiza e mostra o estado do sistema após cada etapa (emissão, execução e escrita de volta) usando a função print().
+
+## Main: 
+
+Na main() o programa realiza configurações iniciais para formatação da tela e executa a simulação do algoritmo de Tomasulo. Ele define o tamanho da fonte, o estilo da fonte, a posição do cursor na tela e inicia a simulação da execução do algoritmo de Tomasulo, carregando os dados de um arquivo (source.txt, mas outro pode ser passado por parâmetro) e exibe os resultados no console. Ao final, aguarda um pressionamento de tecla antes de encerrar o programa.
